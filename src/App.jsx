@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  fetch("/api/actuator/health").then((res) => res.json());
+  useEffect(() => {
+    fetch("/api/actuator/health")
+      .then((res) => res.json())
+      .catch(() => {
+        // Health check failure should not break the first render.
+      });
+  }, []);
 
   return (
     <>

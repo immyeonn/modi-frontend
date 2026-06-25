@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  fetch("/api/actuator/health").then((res) => res.json());
+  useEffect(() => {
+    fetch("/api/actuator/health")
+      .then((res) => res.json())
+      .catch(() => {});
+  }, []);
 
   return (
     <>
-      <div>modi</div>
+      <div>여운</div>
     </>
   );
 }

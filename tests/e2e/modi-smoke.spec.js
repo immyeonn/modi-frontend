@@ -1,9 +1,7 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("modi frontend smoke", () => {
-  test("renders the home screen and calls the backend health endpoint", async ({
-    page,
-  }) => {
+test.describe("여운 frontend smoke", () => {
+  test("renders the home screen and calls the backend health endpoint", async ({ page }) => {
     let healthRequestCount = 0;
 
     await page.route("**/api/actuator/health", async (route) => {

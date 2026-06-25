@@ -5,14 +5,12 @@ function App() {
   useEffect(() => {
     fetch("/api/actuator/health")
       .then((res) => res.json())
-      .catch(() => {
-        // Health check failure should not break the first render.
-      });
+      .catch(() => {});
   }, []);
 
   return (
     <>
-      <div>modi</div>
+      <div>여운</div>
     </>
   );
 }

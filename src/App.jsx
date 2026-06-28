@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "./App.css";
+import LoginPage from "@pages/public/LoginPage";
 
 function App() {
   useEffect(() => {
@@ -11,6 +11,7 @@ function App() {
   return (
     <>
       <div>여운</div>
+      <LoginPage />
     </>
   );
 }

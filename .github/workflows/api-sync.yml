@@ -223,7 +223,10 @@ jobs:
         with:
           # 기본 GITHUB_TOKEN 사용 - 추가 시크릿 불필요.
           base: develop                              # PR 대상 = 프론트 develop
-          branch: api-sync/${{ github.run_id }}
+          # 고정 브랜치: 재실행 시 새 PR을 만들지 않고 "열려 있는 pending sync PR"을 갱신(중복 방지).
+          # 기준 스펙은 머지 전까지 develop에 남으므로, 매 실행이 pending delta 전체를 재파생 →
+          # 데이터 손실 없이 한 PR로 수렴. (run_id 브랜치는 미머지 시 같은 변경으로 중복 PR을 쌓았음)
+          branch: api-sync/pending
           draft: ${{ steps.prep.outputs.draft }}
           commit-message: 'chore(api): sync with backend spec'
           title: ${{ steps.prep.outputs.title }}

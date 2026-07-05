@@ -1,4 +1,5 @@
 import axiosInstance from "@utils/axiosInstance";
+import axios from "axios";
 
 // 소셜 로그인 (가입 겸용)
 export const login = async (provider, code) => {
@@ -21,8 +22,7 @@ export const logout = async () => {
   return data;
 };
 
-// 토큰 재발급 (공통처리예정)
-export const refresh = async () => {
-  const data = await axiosInstance.post("/auth/refresh");
-  return data;
+// 토큰 재발급
+export const refresh = () => {
+  return axios.post("/api/v1/auth/refresh", {}, { withCredentials: true });
 };

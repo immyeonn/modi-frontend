@@ -24,8 +24,12 @@ export default function LoginPage() {
 
     (async () => {
       try {
-        await login("kakao", code);
-        navigate("/yeowun");
+        const response = await login("kakao", code);
+        if (response.data.meta.result === "SUCCESS") {
+          navigate("/yeowun");
+        } else {
+          setStatus("error");
+        }
       } catch (err) {
         console.error("카카오 로그인 실패:", err);
         setStatus("error");

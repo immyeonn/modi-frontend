@@ -60,7 +60,7 @@ const HomePage = () => {
       <Header type="main" />
       <div className="app-content">
         <BannerCarousel banners={bannerData} />
-        <div className="home-body">
+        <div className="app-content-pad">
           <div className="home-box-vertical">
             <SubHeader title="곧 끝나기 전에 봐야할 전시" type="soon" />
             <div className="home-section-vertical">

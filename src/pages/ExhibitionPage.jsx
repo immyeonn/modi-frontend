@@ -1,53 +1,30 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-// api
-import { getExhibitionList } from "@api/exhibition";
+// components
+import Header from "@components/common/Header";
+import ExhibitionList from "@components/layout/ExhibitionList";
+import SearchBox from "@components/layout/SearchBox";
 
 const ExhibitionPage = () => {
-  const navigate = useNavigate();
-
-  const [exhibitionList, setExhibitionList] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await getExhibitionList();
-        if (response.data.meta.result === "SUCCESS") {
-          setExhibitionList(response.data.data.content);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    })();
-  }, []);
-
-  //   const handleAddExhibition = async (params) => {
-  //     try {
-  //       const response = await addPersonalExhibition(params);
-
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+  const [keyword, setKeyword] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const handleSearch = (value) => {
+    setSearchKeyword(value);
+  };
 
   return (
     <div className="app-shell">
-      <div>
-        {exhibitionList.map((item) => {
-          return (
-            <button key={item.exhibitionId} onClick={() => navigate(`/exhibition/${item.exhibitionId}`)}>
-              {item.title}
-            </button>
-          );
-        })}
-        {/* <button
-          onClick={() => {
-            handleAddExhibition;
-          }}
-        >
-          개인전시등록
-        </button> */}
+      <Header type="sub" title="전시탐색" />
+      <div className="app-content">
+        <div className="app-content-pad exhibition-body">
+          <SearchBox
+            value={keyword}
+            onChange={setKeyword}
+            onSubmit={handleSearch}
+            placeholder="전시명을 검색해보세요"
+          />
+          <ExhibitionList data={{ keyword: searchKeyword }} />
+        </div>
       </div>
     </div>
   );

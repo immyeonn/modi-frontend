@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   gap: 44px;
-  padding: 20px;
 }
 
 .home-box-vertical {
   display: flex;
   flex-direction: column;
   gap: 17px;
+  margin-bottom: 30px;
 }
 
 .home-section-vertical {

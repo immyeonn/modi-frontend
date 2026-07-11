@@ -1,3 +1,9 @@
+.exhibition-body {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
 /* ========== ExhibitCard.jsx =========== */
 .exhibit-card {
   display: flex;

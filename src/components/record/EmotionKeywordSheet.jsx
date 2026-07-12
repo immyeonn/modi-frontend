@@ -6,8 +6,6 @@ import BottomSheet from "@components/common/BottomSheet";
 // styles
 import "@styles/record/EmotionKeywordSheet.css";
 
-// TODO: 목업 화면에는 "특별전", "콩"처럼 감정 키워드로 보기 어려운 항목이 섞여 있어(디자인 더미 텍스트로 추정)
-// 실제 최종 감정 키워드 목록이 확정되면 이 배열을 교체해야 함 — 우선 의미가 통하는 감정 형용사 위주로 채워둠.
 const EMOTION_OPTIONS = [
   "슬픈",
   "강렬한",

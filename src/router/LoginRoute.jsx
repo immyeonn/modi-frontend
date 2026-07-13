@@ -34,7 +34,6 @@ export const router = createBrowserRouter([
     ),
   },
   { path: "/exhibition", element: <ExhibitionPage /> },
-  { path: "/exhibition/register", element: <RegisterExhibitionPage /> },
   { path: "/exhibition/:exhibitionId", element: <DetailExhibitionPage /> },
   {
     path: "/record",

@@ -1,13 +1,17 @@
+import { useNavigate } from "react-router-dom";
+
 // utils
 import { getDday, formatMonthDay } from "@utils/common";
 
-const ExhibitCard = ({ thumbnail, title, place, startDate, endDate, onClick, type }) => {
+const ExhibitCard = ({ thumbnail, title, place, startDate, endDate, exhibitionId, type }) => {
+  const navigate = useNavigate();
   const dday = getDday(endDate);
   const openDate = formatMonthDay(startDate);
+  const handleClick = () => navigate(`/exhibition/${exhibitionId}`);
 
   if (type === "vertical") {
     return (
-      <div className="exhibit-card-v" onClick={onClick} role={onClick ? "button" : undefined}>
+      <button type="button" className="exhibit-card-v" onClick={handleClick}>
         <div
           className="exhibit-card-v-thumb"
           style={thumbnail ? { backgroundImage: `url(${thumbnail})` } : undefined}
@@ -19,12 +23,12 @@ const ExhibitCard = ({ thumbnail, title, place, startDate, endDate, onClick, typ
             <span className="exhibit-card-openDate">{openDate} 오픈</span>
           </div>
         </div>
-      </div>
+      </button>
     );
   }
 
   return (
-    <div className="exhibit-card" onClick={onClick}>
+    <button type="button" className="exhibit-card" onClick={handleClick}>
       <div className="exhibit-card-thumb" style={thumbnail ? { backgroundImage: `url(${thumbnail})` } : undefined} />
       <div className="exhibit-card-content-box">
         {dday && <span className="exhibit-card-dday">{dday}</span>}
@@ -36,7 +40,7 @@ const ExhibitCard = ({ thumbnail, title, place, startDate, endDate, onClick, typ
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 

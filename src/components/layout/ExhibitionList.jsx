@@ -72,6 +72,7 @@ const ExhibitionList = ({ type, data }) => {
                 title={exhibit.title}
                 place={exhibit.place}
                 startDate={exhibit.startDate}
+                exhibitionId={exhibit.exhibitionId}
               />
             ))}
           </div>
@@ -85,6 +86,7 @@ const ExhibitionList = ({ type, data }) => {
                 place={exhibit.place}
                 startDate={exhibit.startDate}
                 endDate={exhibit.endDate}
+                exhibitionId={exhibit.exhibitionId}
               />
             ))}
           </div>

@@ -1,0 +1,192 @@
+.detail-exhibition-topbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--app-width);
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 12px 0;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.detail-exhibition-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background-color: var(--color-surface-default);
+  color: var(--color-text-primary);
+}
+
+.detail-exhibition-content {
+  padding-top: 56px;
+}
+
+.detail-exhibition-poster {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 16px;
+  background-color: var(--color-brand-subtle);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-disabled);
+  margin-bottom: 20px;
+}
+
+.detail-exhibition-title {
+  margin: 0 0 4px;
+  color: var(--color-text-primary);
+}
+
+.detail-exhibition-artist {
+  margin: 0 0 12px;
+  color: var(--color-text-tertiary);
+}
+
+.detail-exhibition-genre-chip {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background-color: var(--color-brand-subtle);
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.detail-exhibition-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border-default);
+}
+
+.detail-exhibition-info-row {
+  display: flex;
+  gap: 20px;
+}
+
+.detail-exhibition-info-label {
+  width: 72px;
+  flex-shrink: 0;
+  color: var(--color-text-tertiary);
+}
+
+.detail-exhibition-info-value {
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.detail-exhibition-hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-exhibition-hours-days {
+  margin-right: 12px;
+}
+
+.detail-exhibition-place {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.detail-exhibition-place-name-btn {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  text-align: left;
+}
+
+.detail-exhibition-place-name {
+  color: var(--color-text-primary);
+}
+
+.detail-exhibition-place-address {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: var(--color-text-tertiary);
+  user-select: text;
+}
+
+.detail-exhibition-copy-wrap {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.detail-exhibition-copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+}
+
+.detail-exhibition-copy-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: var(--color-overlay-dim);
+  color: var(--color-text-inverse);
+  pointer-events: none;
+}
+
+.detail-exhibition-copy-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--color-overlay-dim);
+}
+
+.detail-exhibition-description {
+  margin: 0;
+  color: var(--color-text-primary);
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+.detail-exhibition-footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--app-width);
+  max-width: 100%;
+  padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
+  background-color: var(--color-surface-default);
+  box-sizing: border-box;
+}
+
+.detail-exhibition-record-btn {
+  width: 100%;
+  padding: 16px 0;
+  border-radius: 14px;
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-inverse);
+}
+
+.detail-exhibition-loading {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--color-text-tertiary);
+}

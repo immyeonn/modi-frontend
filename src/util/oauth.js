@@ -14,13 +14,11 @@
 
 // 카카오 REST API 키 — authorize URL 에 그대로 노출되는 공개성 값이라 기본값을 코드에 둔다.
 // 테스트앱 "여운-TEST"(앱ID 1500036). 운영 앱으로 교체 시 env(VITE_KAKAO_CLIENT_ID)로 오버라이드.
-const KAKAO_CLIENT_ID =
-  import.meta.env.VITE_KAKAO_CLIENT_ID || "bba3e1d954ec548062bc3c13fd9f72bc";
+const KAKAO_CLIENT_ID = import.meta.env.VITE_KAKAO_CLIENT_ID || "bba3e1d954ec548062bc3c13fd9f72bc";
 
 // 네이버 OAuth 클라이언트 ID — authorize URL 에 그대로 노출되는 공개성 값이라 기본값을 코드에 둔다(카카오와 동일).
 // 백엔드 app.oauth.naver.client-id 와 동일해야 한다. 운영 앱 교체 시 env(VITE_NAVER_CLIENT_ID)로 오버라이드.
-const NAVER_CLIENT_ID =
-  import.meta.env.VITE_NAVER_CLIENT_ID || "ZRdsYHmN3ncMkx2F6353";
+const NAVER_CLIENT_ID = import.meta.env.VITE_NAVER_CLIENT_ID || "x5SSFHxy06Npeieb9JlA";
 
 const PROVIDER_KEY = "yeowun.oauth.provider";
 const STATE_KEY = "yeowun.oauth.state";

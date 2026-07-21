@@ -55,6 +55,21 @@ export const composeRecord = async (exhibitionId, answers) => {
   return data;
 };
 
+// Q&A 답변 기반 감상문 본문 생성 (AI, 스트리밍) - onChunk로 누적 응답 텍스트(SSE delta/done/error)를 전달받는다
+export const composeRecordStream = async (exhibitionId, answers, onChunk) => {
+  const data = await axiosInstance.post(
+    "/records/ai/compose/stream",
+    { exhibitionId, answers },
+    {
+      responseType: "text",
+      onDownloadProgress: (progressEvent) => {
+        onChunk?.(progressEvent.event?.target?.responseText ?? "");
+      },
+    },
+  );
+  return data;
+};
+
 // 전시 정보 기반 감상 질문 3개 생성 (AI)
 export const getRecordQuestions = async (exhibitionId) => {
   const data = await axiosInstance.post("/records/ai/questions", { exhibitionId });

@@ -6,7 +6,7 @@ import Header from "@components/common/Header";
 import StepDots from "@components/record/StepDots";
 
 // api
-import { getRecordQuestions, composeRecord, getRecordDraft } from "@api/record";
+import { getRecordQuestions, getRecordDraft } from "@api/record";
 
 // store
 import { useRecordDraftStore } from "@store/useRecordDraftStore";
@@ -34,7 +34,6 @@ export default function RecordQuestionsPage() {
   const setContent = useRecordDraftStore((state) => state.setContent);
 
   const [step, setStep] = useState(0);
-  const [isComposing, setIsComposing] = useState(false);
   const [isShuffling, setIsShuffling] = useState(false);
   // 로딩은 "질문이 없고, 생성할 전시가 있는" 경우에만 시작한다.
   // 새로고침 복원(질문 있음)·전시 없이 직접 진입(생성 불가)이면 처음부터 로딩 아님.
@@ -109,28 +108,15 @@ export default function RecordQuestionsPage() {
     setStep((prev) => prev - 1);
   };
 
-  const handleNext = async () => {
+  const handleNext = () => {
     if (step < TOTAL_STEPS - 1) {
       setStep((prev) => prev + 1);
       return;
     }
-
-    setIsComposing(true);
-    try {
-      const response = await composeRecord(
-        exhibitionId,
-        questions.map((question, index) => ({ question, answer: answers[index] })),
-      );
-      const composedText = response.data.data.content ?? response.data.data.text ?? "";
-      setContent(composedText);
-      // 서버 draft는 백엔드 compose()가 이미 저장한다(질문+답변+초안). 여기서 또 저장하지 않는다.
-      navigate("/record/compose");
-    } catch (error) {
-      console.log(error);
-      showToast(aiErrorMessage(error));
-    } finally {
-      setIsComposing(false);
-    }
+    // 감상문 생성은 compose 페이지에서 스트리밍으로 처리한다(여기서 기다리지 않고 바로 이동).
+    // 새 초안을 받도록 이전 본문은 비워둔다.
+    setContent("");
+    navigate("/record/compose");
   };
 
   const currentAnswer = answers[step] ?? "";
@@ -190,7 +176,7 @@ export default function RecordQuestionsPage() {
         <button
           type="button"
           className="record-questions-next text-body-1-medium"
-          disabled={!currentAnswer.trim() || isComposing}
+          disabled={!currentAnswer.trim()}
           onClick={handleNext}
         >
           {isLastStep ? "감상문으로 다듬기" : "다음"}

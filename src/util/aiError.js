@@ -8,7 +8,8 @@
 const FALLBACK = "문제가 생겼어요. 잠시 후 다시 시도해 주세요.";
 
 export function aiErrorMessage(error) {
-  return error?.response?.data?.message ?? FALLBACK;
+  // axios(JSON) 응답 · SSE 스트림 에러(userMessage) 둘 다 지원.
+  return error?.response?.data?.message ?? error?.userMessage ?? FALLBACK;
 }
 
 /** rate limit(429) 인지 여부 — 필요하면 UI에서 따로 처리(예: 버튼 쿨다운). */
